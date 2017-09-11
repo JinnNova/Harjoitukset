@@ -1,7 +1,7 @@
 function Particle(x,y){
     this.pos = createVector(x,y);
     // fireworkeilla on random nopeus jotta lentävät eri korkeuksille
-    this.vel = createVector(0,random(-12,-8));
+    this.vel = createVector(0,random(-11,-7));
     this.acc = createVector(0,0);
 
     this.applyForce = function(force){
