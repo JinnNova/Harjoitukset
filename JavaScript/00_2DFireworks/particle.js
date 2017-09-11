@@ -2,15 +2,17 @@ function Particle(x,y,firework){
     this.pos = createVector(x,y);
     this.firework = firework;
     this.lifespan = 255;
+    this.acc = createVector(0,0);
+
     if (this.firework){
         // fireworkeilla on random nopeus jotta lentävät eri korkeuksille
         this.vel = createVector(0,random(-11,-7));
     }
     else {
         this.vel = p5.Vector.random2D();
-        this.vel.mult(random(2,10));
+        this.vel.mult(random(2,12));
     }
-    this.acc = createVector(0,0);
+    
 
     this.applyForce = function(force){
         this.acc.add(force);
@@ -39,10 +41,13 @@ function Particle(x,y,firework){
     this.show = function(){
         if (!this.firework){
             strokeWeight(2);
+            // lifespan = alpha eli himmenee
             stroke(255, this.lifespan);
         }
         else {
             strokeWeight(4);
+            // jos tästä stroken jätti pois niin strokealphaksi jäi pysyvästi lifespan eli myös fireworkit alko vilkkumaan!
+            stroke(255,255);
             
         }
         point(this.pos.x, this.pos.y);

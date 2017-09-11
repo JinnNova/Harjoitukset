@@ -22,7 +22,7 @@ function draw(){
             fireworks.splice(i,1);
         }
     }
-    console.log(fireworks.length);
+    //Testaa arrayn kokoa: console.log(fireworks.length);
 
 
 }
