@@ -1,7 +1,8 @@
-function Particle(x,y,firework){
+function Particle(x,y,hu,firework){
     this.pos = createVector(x,y);
     this.firework = firework;
     this.lifespan = 255;
+    this.hu = hu;
     this.acc = createVector(0,0);
 
     if (this.firework){
@@ -42,12 +43,13 @@ function Particle(x,y,firework){
         if (!this.firework){
             strokeWeight(2);
             // lifespan = alpha eli himmenee
-            stroke(255, this.lifespan);
+            stroke(random(255), hu, 255, this.lifespan);
         }
         else {
             strokeWeight(4);
             // jos tästä stroken jätti pois niin strokealphaksi jäi pysyvästi lifespan eli myös fireworkit alko vilkkumaan!
-            stroke(255,255);
+            // RGB tarvii kolme väriä. kokeilin kaikenlaista kikkailua
+            stroke(random(255), hu, 255);
             
         }
         point(this.pos.x, this.pos.y);
