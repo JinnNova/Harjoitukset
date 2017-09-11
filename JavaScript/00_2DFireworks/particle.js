@@ -1,11 +1,13 @@
 function Particle(x,y,firework){
     this.pos = createVector(x,y);
+    //this.firework = firework;
     if (firework){
         // fireworkeilla on random nopeus jotta lentävät eri korkeuksille
         this.vel = createVector(0,random(-11,-7));
     }
     else {
         this.vel = p5.Vector.random2D();
+        this.vel.mult(random(1,6));
     }
     this.acc = createVector(0,0);
 
