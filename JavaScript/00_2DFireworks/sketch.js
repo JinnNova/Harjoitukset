@@ -7,10 +7,11 @@ function setup(){
     
     stroke(255);
     strokeWeight(4);
+    background(30,30,30);
 
 }
 function draw(){
-    background(51);
+    background(30,30,30,45);
     // randomisti noin kerran kymmenessä framessa luodaan uusi firework
     if (random(1) < 0.1){
         fireworks.push(new Firework());
