@@ -1,6 +1,7 @@
 function Particle(x,y){
     this.pos = createVector(x,y);
-    this.vel = createVector(0,-10);
+    // fireworkeilla on random nopeus jotta lentävät eri korkeuksille
+    this.vel = createVector(0,random(-12,-8));
     this.acc = createVector(0,0);
 
     this.applyForce = function(force){
@@ -10,7 +11,7 @@ function Particle(x,y){
     this.update = function(){
         this.vel.add(this.acc);
         this.pos.add(this.vel);
-        //tällä sai jotenkin fireworkin lentään korkeemmalle ja pehmeemmin. miksi?
+        // tällä sai jotenkin fireworkin lentään korkeemmalle ja pehmeemmin. miksi?
         this.acc.mult(0);
     }
 
