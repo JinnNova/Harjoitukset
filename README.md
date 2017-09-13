@@ -1,2 +1,2 @@
 # Harjoitukset
-Sekalaisia omia harjoituksia, sekä joitakin tehtyjä tutoriaaleja.
+Sekalaisia omia harjoituksia, sekä tällä hetkellä pääasiassa Coding trainin tutoriaaleja.
