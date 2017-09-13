@@ -34,8 +34,9 @@ function setup(){
 
 }
 function draw(){
-    background(50);
-    //miksi alussa piirtää kaikki vasempaan ylänurkkaan ja sitten vasta sieltä alkaa vetää paikalleen? :D 
+	// oma häivekuvajuttu
+    background(50,50,50,45);
+    // miksi alussa piirtää kaikki vasempaan ylänurkkaan ja sitten vasta sieltä alkaa vetää paikalleen? :D 
     for(var i=0; i < vehicles.length; i++){
     	var v = vehicles[i];
     	v.behaviors();
