@@ -9,21 +9,22 @@ function setup(){
     );
     background(10);
     // luodaan symboli olio
-    symbol = new Symbol( width / 2, height / 2 );
+    symbol = new Symbol( width / 2, 0, random(5,10) );
     // kutsutaan symbolin omaa funktiota jolla generoidaan siis random symboli
     symbol.setToRandomSymbol();
     textSize(symbolSize);
 }
 function draw(){
     // draw on functio jota kutsutaan loopissa, 60 frames per second
-
+    background(10); // halutaan piirtää background uusiksi joka framessa
     symbol.render();
 }
 
-function Symbol(x,y){
+function Symbol(x,y,speed){
     this.x = x;
     this.y = y;
     this.value;
+    this.speed = speed;
 
     // SYMBOLINHAKU-FUNKTIO
     // Käytetään matrixiin katakanaa, katakana unicode block alkaa kohdasta 0x30A0 = 12448 decimalina
@@ -40,5 +41,19 @@ function Symbol(x,y){
         //tekstin väri, vähän sinistä vihreän sekaan
         fill(0,255,70);
         text(this.value, this.x, this.y);
+        // Let's make it rain :D
+        this.rain();
+    }
+
+    // jos y koskettaa pohjaa niin resetataan se (ei tarvi looppeja koska draw on loop)
+    this.rain = function(){
+        //if(this.y >= height){
+        //    this.y = 0;
+        //}
+        //else {
+        //    this.y += this.speed;
+        //}
+        // YLLÄ OLEVA IF-ELSE NÄTIMMIN:
+        this.y = (this.y >= height) ? 0 : this.y += this.speed;
     }
 }
