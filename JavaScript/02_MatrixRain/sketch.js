@@ -1,5 +1,6 @@
 //globaalit muuttujat alkuun:
 var symbol;
+var symbolSize =  60;
 
 function setup(){
     createCanvas(
@@ -11,6 +12,7 @@ function setup(){
     symbol = new Symbol( width / 2, height / 2 );
     // kutsutaan symbolin omaa funktiota jolla generoidaan siis random symboli
     symbol.setToRandomSymbol();
+    textSize(symbolSize);
 }
 function draw(){
     // draw on functio jota kutsutaan loopissa, 60 frames per second
