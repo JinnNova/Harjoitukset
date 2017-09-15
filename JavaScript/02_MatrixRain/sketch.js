@@ -1,6 +1,6 @@
 //globaalit muuttujat alkuun:
-var symbol;
 var symbolSize =  60;
+var stream;
 
 function setup(){
     createCanvas(
@@ -8,16 +8,17 @@ function setup(){
         window.innerHeight
     );
     background(10);
-    // luodaan symboli olio
-    symbol = new Symbol( width / 2, 0, random(5,10) );
-    // kutsutaan symbolin omaa funktiota jolla generoidaan siis random symboli
-    symbol.setToRandomSymbol();
+    // luodaan nyt symboli olion sijasta stream olio
+    stream = new Stream();
+    // kutsutaan streamin funktiota joka generoi symbolit
+    stream.generateSymbols();
     textSize(symbolSize);
 }
+
 function draw(){
     // draw on functio jota kutsutaan loopissa, 60 frames per second
     background(10); // halutaan piirtää background uusiksi joka framessa
-    symbol.render();
+    stream.render();
 }
 
 function Symbol(x,y,speed){
@@ -46,15 +47,7 @@ function Symbol(x,y,speed){
 
     }
 
-    // SYMBOLIN NÄYTTÄMIS-FUNKTIO 
-    this.render = function(){
-        //tekstin väri, vähän sinistä vihreän sekaan
-        fill(0,255,70);
-        text(this.value, this.x, this.y);
-        // Let's make it rain :D
-        this.rain();
-        this.setToRandomSymbol();
-    }
+    // SYMBOLIN NÄYTTÄMIS-FUNKTIO (POISTETTU)
 
     // jos y koskettaa pohjaa niin resetataan se (ei tarvi looppeja koska draw on loop)
     this.rain = function(){
@@ -66,5 +59,42 @@ function Symbol(x,y,speed){
         //}
         // YLLÄ OLEVA IF-ELSE NÄTIMMIN:
         this.y = (this.y >= height) ? 0 : this.y += this.speed;
+    }
+}
+
+//tehdään yhden symbolin sijasta streameja
+function Stream(){
+    this.symbols = [];
+    this.totalSymbols = round(random(5,15));
+    this.speed = random(3,12);
+
+    // Streamin oma funktio symbolien generoimiseen
+    this.generateSymbols = function(){
+        var y = 0;
+        var x = width / 2;
+
+        //täytetään Streamin symbols array symboleilla
+        for(var i = 0; i <= this.totalSymbols; i++){
+            symbol = new Symbol(x, y, this.speed);
+            symbol.setToRandomSymbol();
+            // pusketaan jokainen symboli arrayyn elämään
+            this.symbols.push(symbol);
+            // halutaan asettaa jokainen symboli edellisen yläpuolelle
+            y -= symbolSize;
+        }
+    }
+
+    // Streamin vastuulle myös symbolien renderöinti
+    this.render = function(){
+    	// FOR EACH JEE! -> koska jokainen elementti on symbol, pitää this:it vaihtaa symboliksi
+        this.symbols.forEach(function(symbol) {
+            //tekstin väri, vähän sinistä vihreän sekaan
+            fill(0,255,70);
+            text(symbol.value, symbol.x, symbol.y);
+            // Let's make it rain :D
+            symbol.rain();
+            symbol.setToRandomSymbol();
+        //huom. for each todellakin javascriptissa loppuu näin ja alusta näyttäisi "puuttuvan" yksi ) merkki sentakia. :o
+        });
     }
 }
