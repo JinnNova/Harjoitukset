@@ -1,3 +1,5 @@
+// Thanks to Emily Xie for this tutorial on "Matrix Digital Rain" in Javascript and p5.js
+
 //globaalit muuttujat alkuun:
 var symbolSize =  28;
 var streams = [];
