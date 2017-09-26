@@ -1,4 +1,4 @@
-// This coding train tutorial by. Daniel Shiffman
+// Thanks to Daniel Shiffman for this tutorial on "Steering Behaviors" in Javascript and p5.js
 
 var font;
 var vehicles = [];
