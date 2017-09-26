@@ -1,5 +1,5 @@
 //globaalit muuttujat alkuun:
-var symbolSize =  60;
+var symbolSize =  28;
 var streams = [];
 
 function setup(){
@@ -72,8 +72,8 @@ function Symbol(x,y,speed){
 //tehdään yhden symbolin sijasta streameja
 function Stream(){
     this.symbols = [];
-    this.totalSymbols = round(random(5,15));
-    this.speed = random(3,12);
+    this.totalSymbols = round(random(5,30));
+    this.speed = random(5,15);
 
     // Streamin oma funktio symbolien generoimiseen
     this.generateSymbols = function(x,y){
