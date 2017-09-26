@@ -1,6 +1,6 @@
 //globaalit muuttujat alkuun:
 var symbolSize =  60;
-var stream;
+var streams = [];
 
 function setup(){
     createCanvas(
@@ -8,17 +8,24 @@ function setup(){
         window.innerHeight
     );
     background(10);
-    // luodaan nyt symboli olion sijasta stream olio
-    stream = new Stream();
-    // kutsutaan streamin funktiota joka generoi symbolit
-    stream.generateSymbols();
+
+    var x = 0;
+    var y = 0;
+    for(var i = 0; i <= width / symbolSize; i++){
+        var stream = new Stream();
+        stream.generateSymbols(x,y);
+        streams.push(stream);
+        x += symbolSize;
+    }
     textSize(symbolSize);
 }
 
 function draw(){
     // draw on functio jota kutsutaan loopissa, 60 frames per second
     background(10); // halutaan piirtää background uusiksi joka framessa
-    stream.render();
+    streams.forEach(function(stream){
+        stream.render();
+    });
 }
 
 function Symbol(x,y,speed){
@@ -69,9 +76,7 @@ function Stream(){
     this.speed = random(3,12);
 
     // Streamin oma funktio symbolien generoimiseen
-    this.generateSymbols = function(){
-        var y = 0;
-        var x = width / 2;
+    this.generateSymbols = function(x,y){
 
         //täytetään Streamin symbols array symboleilla
         for(var i = 0; i <= this.totalSymbols; i++){
