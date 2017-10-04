@@ -7,7 +7,16 @@ function setup(){
 function draw(){
     background(10);
     ship.render();
-    ship.turn(0.1);
+    // ship.turn(0.1);
+}
+
+function keyPressed(){
+    if (keyCode == RIGHT_ARROW){
+        ship.turn(0.1);
+    }
+    else if (keyCode == LEFT_ARROW){
+        ship.turn(-0.1);
+    }
 }
 
 function Ship(){
@@ -16,7 +25,7 @@ function Ship(){
     // P5 ei käsittele asteina vaan radiantteina joten 90 astetta on PI / 2
     this.heading = 0;
 
-    this.render = function() {
+    this.render = function(){
         translate(this.pos.x, this.pos.y);
         rotate(this.heading);
         noFill();
@@ -24,7 +33,7 @@ function Ship(){
         triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
     }
 
-    this.turn = function(angle) {
+    this.turn = function(angle){
         this.heading += angle
 
     }
