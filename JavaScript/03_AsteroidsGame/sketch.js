@@ -9,6 +9,7 @@ function draw(){
     ship.render();
     ship.turn();
     ship.update();
+    ship.edges();
 }
 
 function keyPressed(){
@@ -63,6 +64,15 @@ function Ship(){
         noFill();
         stroke(255);
         triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
+    }
+
+    this.edges = function(){
+        if (this.pos.x > width + this.r){
+            this.pos.x = -this.r;
+        }
+        else if (this.pos.x < -this.r){
+            this.pos.x = width + this.r;
+        }
     }
 
     this.setRotation = function(a){
