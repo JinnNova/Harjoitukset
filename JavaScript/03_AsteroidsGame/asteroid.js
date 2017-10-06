@@ -2,7 +2,10 @@
 // Asteroid constructor function
 function Asteroid() {
     this.pos = createVector(random(width), random(height));
-    this.r = 50;
+    // random kokoiset asteroidit
+    this.r = random(15,50);
+    // jotta asteroidilla olisi 5-15 vertexiä vaihtelevasti:
+    this.total = floor(random(5,15));
 
     this.render = function() {
     	push();
@@ -12,10 +15,10 @@ function Asteroid() {
         //ellipse(0,0, this.r * 2);
 
         beginShape();
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < this.total; i++) {
         	// TWO_PI = 360 astetta, map = p5 functio
         	// tarvitaan trigonometriaa
-            var angle = map(i,0,10,0,TWO_PI);
+            var angle = map(i,0,this.total,0,TWO_PI);
             var x = this.r * cos(angle);
             var y = this.r * sin(angle);
             vertex(x,y);
