@@ -35,7 +35,7 @@ function draw(){
 
 function keyPressed(){
     if (key == ' '){
-        lasers.push(new Laser(ship.pos));
+        lasers.push(new Laser(ship.pos, ship.heading));
     }
     if (keyCode == RIGHT_ARROW){
         ship.setRotation(0.1);
