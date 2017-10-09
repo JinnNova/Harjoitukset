@@ -14,6 +14,13 @@ function setup(){
 
 function draw(){
     background(10);
+
+    for (var i = 0; i < lasers.length; i++) {
+        lasers[i].render();
+        lasers[i].update();
+    }
+    // piirretään ship vasta laaserien jälkeen että menee laaserien päälle :D niin ei tartte siirtää laasereiden alkulähdettä
+    // ONGELMA: jostain syystä shippiin ei tahdo vaikuttaa fill eikä stroke. wat.
     ship.render();
     ship.turn();
     ship.update();
@@ -25,12 +32,6 @@ function draw(){
         asteroids[i].update();
         asteroids[i].edges();
     }
-
-    for (var i = 0; i < lasers.length; i++) {
-        lasers[i].render();
-        lasers[i].update();
-    }
-
 }
 
 function keyPressed(){

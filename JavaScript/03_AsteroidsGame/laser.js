@@ -1,6 +1,7 @@
 function Laser(shippos, heading) {
     this.pos = createVector(shippos.x, shippos.y);
     this.vel = p5.Vector.fromAngle(heading);
+    this.vel.mult(8);
 
     this.update = function() {
         this.pos.add(this.vel);
