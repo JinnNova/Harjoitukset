@@ -2,6 +2,7 @@
 // Asteroid constructor function
 function Asteroid() {
     this.pos = createVector(random(width), random(height));
+    this.vel = p5.Vector.random2D();
     // random kokoiset asteroidit
     this.r = random(15,50);
     // jotta asteroidilla olisi 5-15 vertexiä vaihtelevasti:
@@ -9,6 +10,10 @@ function Asteroid() {
     this.offset = [];
     for (var i = 0; i < this.total; i++){
         this.offset[i] = random(-8,8);
+    }
+
+    this.update = function() {
+        this.pos.add(this.vel);
     }
 
     this.render = function() {
