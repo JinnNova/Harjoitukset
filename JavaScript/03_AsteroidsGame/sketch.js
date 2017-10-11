@@ -25,9 +25,10 @@ function draw(){
 
                 var newAsteroids = asteroids[j].breakup();
                 console.log(newAsteroids);
-                //asteroids.push(newAsteroids);
-                asteroids.splice(j,1);
                 
+                asteroids.splice(j,1);
+                asteroids = asteroids.concat(newAsteroids);
+
                 //laaserikin pitäisi poistaa mutta jos laasereita oli arrayssa vain yksi niin 
                 //TypeError: Cannot read property 'hits' of undefined, muuten toimi jos enemmän kuin 1. miten ratkastaan?
                 //sattukin että yritti ihan samaa asiaa videolla :D ja sama ongelma
