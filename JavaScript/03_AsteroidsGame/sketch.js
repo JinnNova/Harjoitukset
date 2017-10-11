@@ -19,8 +19,13 @@ function draw(){
     for (var i = 0; i < lasers.length; i++) {
         lasers[i].render();
         lasers[i].update();
-        for (var j = 0; j < asteroids.length; j++) {
+        // looppi pitää tehdä takaperin ettei tarkisteta uusia asteroideja jotka on juuri generoitu osumasta. :D
+        for (var j = asteroids.length-1; j >= 0 ; j--) {
             if (lasers[i].hits(asteroids[j])){
+                var newAsteroids = asteroids[j].breakup();
+                console.log(newAsteroids);
+                //asteroids.push(newAsteroids);
+                asteroids.splice(j,1);
             }
         }
     }

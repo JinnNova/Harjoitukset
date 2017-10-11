@@ -7,10 +7,10 @@ function Laser(shippos, heading) {
         this.pos.add(this.vel);
     }
     this.render = function() {
-    	// ilman pushia ja poppia stroke weight laitetaan KAIKKEEN (asteroidit, alus jne)
-    	push();
-    	stroke(255);
-    	strokeWeight(4);
+        // ilman pushia ja poppia stroke weight laitetaan KAIKKEEN (asteroidit, alus jne)
+        push();
+        stroke(255);
+        strokeWeight(4);
         point(this.pos.x, this.pos.y);
         pop();
     }
@@ -20,6 +20,10 @@ function Laser(shippos, heading) {
         var d = dist(this.pos.x, this.pos.y, asteroid.pos.x, asteroid.pos.y);
         if (d < asteroid.r) {
             console.log("HIT");
+            return true;
+        }
+        else {
+            return false;
         }
     }
 }
