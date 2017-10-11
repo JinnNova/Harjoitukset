@@ -1,6 +1,6 @@
 
 // Asteroid constructor function
-function Asteroid(pos) {
+function Asteroid(pos, r) {
     // jos funktio saa argumenttina positionin niin luodaan uus asteroidi siihen, muuten random positio!
     if (pos) {
         this.pos = pos.copy();
@@ -8,10 +8,18 @@ function Asteroid(pos) {
     else {
         this.pos = createVector(random(width), random(height));
     }
+
+    // jos saadaan r value argumenttina niin puolitetaan se
+    if (r) {
+        this.r = r * 0.5;
+    }
+    else {
+        // random kokoiset asteroidit
+        this.r = random(15,50);
+    }
     
     this.vel = p5.Vector.random2D();
-    // random kokoiset asteroidit
-    this.r = random(15,50);
+    
     // jotta asteroidilla olisi 5-15 vertexiä vaihtelevasti:
     this.total = floor(random(8,15));
     this.offset = [];
@@ -40,8 +48,8 @@ function Asteroid(pos) {
     // breakup luo kaksi uutta asteroidia
     this.breakup = function() {
         var newA = [];
-        newA[0] = new Asteroid(this.pos);
-        newA[1] = new Asteroid(this.pos);
+        newA[0] = new Asteroid(this.pos, this.r);
+        newA[1] = new Asteroid(this.pos, this.r);
         return newA;
     }
 
