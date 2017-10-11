@@ -21,14 +21,16 @@ function draw(){
         lasers[i].update();
         // looppi pitää tehdä takaperin ettei tarkisteta uusia asteroideja jotka on juuri generoitu osumasta. :D
         for (var j = asteroids.length-1; j >= 0 ; j--) {
-            if (lasers[i].hits(asteroids[j])){
 
-                var newAsteroids = asteroids[j].breakup();
-                //console.log(newAsteroids);
+            if (lasers[i].hits(asteroids[j])){
+                // tehdään uusia asteroideja vaan jos r > 12, muuten asteroidi vaan katoaa
+                if (asteroids[j].r > 12) {
+                    var newAsteroids = asteroids[j].breakup();
+                    //console.log(newAsteroids);
+                    asteroids = asteroids.concat(newAsteroids);
+                }
                 
                 asteroids.splice(j,1);
-                asteroids = asteroids.concat(newAsteroids);
-
                 //laaserikin pitäisi poistaa mutta jos laasereita oli arrayssa vain yksi niin 
                 //TypeError: Cannot read property 'hits' of undefined, muuten toimi jos enemmän kuin 1. miten ratkastaan?
                 //sattukin että yritti ihan samaa asiaa videolla :D ja sama ongelma
