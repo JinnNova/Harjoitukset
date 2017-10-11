@@ -3,7 +3,8 @@ var asteroids = [];
 var lasers = [];
 
 function setup(){
-    createCanvas(windowWidth, windowHeight);
+    //createCanvas(windowWidth, windowHeight);
+    createCanvas(800, 800);
     ship = new Ship();
 
     // 5 asteroidia aluksi
@@ -18,9 +19,13 @@ function draw(){
     for (var i = 0; i < lasers.length; i++) {
         lasers[i].render();
         lasers[i].update();
+        for (var j = 0; j < asteroids.length; j++) {
+            if (lasers[i].hits(asteroids[j])){
+            }
+        }
     }
     // piirretään ship vasta laaserien jälkeen että menee laaserien päälle :D niin ei tartte siirtää laasereiden alkulähdettä
-    // ONGELMA: jostain syystä shippiin ei tahdo vaikuttaa fill eikä stroke. wat.
+    // ONGELMA: jostain syystä shippiin ei tahdo vaikuttaa fill eikä stroke. wat. -> jostain syystä ei vaan halunnut päivittää. toimii
     ship.render();
     ship.turn();
     ship.update();
