@@ -16,16 +16,24 @@ function setup(){
 function draw(){
     background(10);
 
-    for (var i = 0; i < lasers.length; i++) {
+    for (var i = lasers.length-1; i >= 0 ; i--) {
         lasers[i].render();
         lasers[i].update();
         // looppi pitää tehdä takaperin ettei tarkisteta uusia asteroideja jotka on juuri generoitu osumasta. :D
         for (var j = asteroids.length-1; j >= 0 ; j--) {
             if (lasers[i].hits(asteroids[j])){
+
                 var newAsteroids = asteroids[j].breakup();
                 console.log(newAsteroids);
                 //asteroids.push(newAsteroids);
                 asteroids.splice(j,1);
+                
+                //laaserikin pitäisi poistaa mutta jos laasereita oli arrayssa vain yksi niin 
+                //TypeError: Cannot read property 'hits' of undefined, muuten toimi jos enemmän kuin 1. miten ratkastaan?
+                //sattukin että yritti ihan samaa asiaa videolla :D ja sama ongelma
+                lasers.splice(i,1);
+                //RATKAISU! loopista pitää tulla ulos eikä jatkaa senjälkeen kun laaseri poistetaan :D
+                break;
             }
         }
     }
