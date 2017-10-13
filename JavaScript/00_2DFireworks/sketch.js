@@ -1,3 +1,5 @@
+// Thanks to Daniel Shiffman for this tutorial on "Fireworks" in Javascript and p5.js
+
 var fireworks =[];
 var gravity;
 
