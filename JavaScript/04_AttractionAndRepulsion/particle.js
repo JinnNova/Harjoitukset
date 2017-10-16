@@ -1,8 +1,8 @@
 function Particle(x,y){
     this.pos = createVector(x,y);
-    this.vel = createVector(0,1);
+    this.vel = p5.Vector.random2D();
     this.acc = createVector();
-    // vector ilman argumentteja on 0,0
+    // createVector vector ilman argumentteja on 0,0
 
     this.update = function(){
         this.pos.add(this.vel);
