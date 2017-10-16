@@ -1,12 +1,16 @@
 var attractor;
-var particle;
+var particles = [];
 
 function setup(){
     createCanvas(1200, 800);
     //että alussa on valmiiksi tausta tumma
-    background(10);
+    background(30);
 
-    particle = new Particle(400,200);
+    for (var i=0; i < 30; i++){
+        particles.push(new Particle(400,200));
+    }
+
+    
     attractor = createVector(600,400);
 }
 
@@ -16,8 +20,11 @@ function draw(){
     strokeWeight(2);
     point(attractor.x, attractor.y);
 
-    particle.attracted(attractor);
-    particle.update();
-    particle.show();
+    for (var i=0; i < particles.length; i++){
+    	var particle = particles[i];
+        particle.attracted(attractor);
+        particle.update();
+        particle.show();
+    }
 
 }
