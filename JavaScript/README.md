@@ -1,6 +1,9 @@
+# JavaScript experiments with p5.js
 
-## 2D Fireworks effect
+### 2D Fireworks effect
 
-## Steering behaviors with p5.js
+### Steering behaviors
 
-## Matrix digital rain effect 
+### Matrix digital rain
+
+### Asteroids game
