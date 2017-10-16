@@ -13,7 +13,8 @@ function draw(){
     strokeWeight(2);
     point(attractor.x, attractor.y);
 
-    particle.show();
-    particle.update();
     particle.attracted(attractor);
+    particle.update();
+    particle.show();
+
 }

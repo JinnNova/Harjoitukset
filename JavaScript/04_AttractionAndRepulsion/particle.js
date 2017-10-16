@@ -15,6 +15,12 @@ function Particle(x,y){
         point(this.pos.x, this.pos.y);
     }
     this.attracted = function(target){
-
+    	// direction = target - this.pos (sub on miinus koska - ei toimi vectoreihin js:ssä)
+        var force = p5.Vector.sub(target, this.pos);
+        var dsquared = force.magSq();
+        var G = 6.67408;
+        var strength = 1; //G / dsquared;
+        force.setMag(strength);
+        this.acc = force;
     }
 }
