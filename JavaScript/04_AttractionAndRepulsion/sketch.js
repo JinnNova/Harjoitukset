@@ -1,7 +1,9 @@
 var attractor;
+var particle;
 
 function setup(){
     createCanvas(1200, 800);
+    particle = new Particle(200,400);
     attractor = createVector(200,200);
 }
 
@@ -10,4 +12,8 @@ function draw(){
     stroke(255);
     strokeWeight(2);
     point(attractor.x, attractor.y);
+
+    particle.show();
+    particle.update();
+    particle.attracted(attractor);
 }
