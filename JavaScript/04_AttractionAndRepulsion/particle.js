@@ -1,12 +1,16 @@
 function Particle(x,y){
     this.pos = createVector(x,y);
     this.vel = p5.Vector.random2D();
+    // initial velocity on enemmän random
+    this.vel.setMag(random(1,4));
     this.acc = createVector();
     // createVector vector ilman argumentteja on 0,0
 
     this.update = function(){
         this.pos.add(this.vel);
         this.vel.add(this.acc);
+        //acceleration pitää aina resettaa kun lasketaan uus force
+        this.acc.mult(0);
     }
 
     this.show = function(){
@@ -20,9 +24,11 @@ function Particle(x,y){
         var dsquared = force.magSq();
         dsquared = constrain(dsquared,25,500);
 
-        var G = 50; //6.67408;
+        // nopeus ?
+        var G = 40; //6.67408;
         var strength = G / dsquared;
         force.setMag(strength);
-        this.acc = force;
+        // lasketaan uus force kaikista attractoreista
+        this.acc.add(force);
     }
 }
