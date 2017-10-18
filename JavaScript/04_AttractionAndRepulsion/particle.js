@@ -9,6 +9,8 @@ function Particle(x,y){
     this.update = function(){
         this.pos.add(this.vel);
         this.vel.add(this.acc);
+        //acceleration pitää aina resettaa kun lasketaan uus force
+        this.acc.mult(0);
     }
 
     this.show = function(){
@@ -26,6 +28,7 @@ function Particle(x,y){
         var G = 40; //6.67408;
         var strength = G / dsquared;
         force.setMag(strength);
-        this.acc = force;
+        // lasketaan uus force kaikista attractoreista
+        this.acc.add(force);
     }
 }
