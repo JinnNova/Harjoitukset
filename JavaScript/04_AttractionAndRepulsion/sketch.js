@@ -6,11 +6,11 @@ function setup(){
     //että alussa on valmiiksi tausta tumma
     background(30);
 
-    for (var i=0; i < 3; i++){
-        particles.push(new Particle(400,200));
+    for (var i=0; i < 5; i++){
+        particles.push(new Particle(600,400));
     }
 
-    for (var i=0; i < 4; i++){
+    for (var i=0; i < 10; i++){
         attractors.push(createVector(random(width), random(height)));
     }
 }
