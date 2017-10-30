@@ -8,7 +8,7 @@ function setup(){
 }
 
 function draw(){
-    background(10,4);
+    background(10,140);
     let p = new Particle();
     particles.push(p);
     for (let i = 0; i < particles.length; i++) {
@@ -24,16 +24,18 @@ class Particle {
         this.y = 600;
         this.velx = random(-1,1);
         this.vely = random(-5,-1);
+        this.alpha = 255;
     }
 
     update(){
         this.x += this.velx;
         this.y += this.vely;
+        this.alpha -= 5;
     }
 
     show(){
         stroke(255);
-        fill(255,10);
+        fill(255,this.alpha);
         ellipse(this.x,this.y,16);
     }
 }
