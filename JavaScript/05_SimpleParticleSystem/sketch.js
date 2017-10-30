@@ -4,13 +4,13 @@ function setup(){
     createCanvas(1200, 800);
     //että alussa on valmiiksi tausta tumma
     background(30);
-    let p = new Particle();
-    particles.push(p);
 
 }
 
 function draw(){
     background(10,4);
+    let p = new Particle();
+    particles.push(p);
     for (let i = 0; i < particles.length; i++) {
         particles[i].update();
         particles[i].show();
