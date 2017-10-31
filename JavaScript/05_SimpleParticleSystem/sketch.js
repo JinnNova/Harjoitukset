@@ -11,7 +11,7 @@ function draw(){
     background(10,140);
     let p = new Particle();
     particles.push(p);
-    for (let i = 0; i < particles.length; i++) {
+    for (let i = particles.length-1; i >= 0; i--) {
         particles[i].update();
         particles[i].show();
         // we have to clear up the used particles
