@@ -1,3 +1,5 @@
+// Thanks to Daniel Shiffman for this tutorial on "Attraction And Repulsion" in Javascript and p5.js
+
 var attractors = [];
 var particles = [];
 

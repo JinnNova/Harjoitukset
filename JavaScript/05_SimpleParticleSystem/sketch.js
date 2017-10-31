@@ -1,3 +1,5 @@
+// Thanks to Daniel Shiffman for this tutorial on "Simple particle system" in Javascript and p5.js
+
 let particles =[];
 
 function setup(){
