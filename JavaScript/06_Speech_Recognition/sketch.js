@@ -5,11 +5,12 @@ function setup(){
     noCanvas();
     // language selection, browser language or en-US
     let lang = navigator.language || 'en-US';
-    let speechRec = new p5.speechRec(lang, gotSpeech);
+    let speechRec = new p5.SpeechRec(lang, gotSpeech);
     // start listening
     speechRec.start();
     
     function gotSpeech(){
+    	console.log("testi")
         console.log(speechRec)
     }
 }
