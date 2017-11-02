@@ -5,10 +5,21 @@
 let speechObj;
 
 function setup() {
-  noCanvas();
+    createCanvas(400,50);
+    background(0);
 
-  speechObj = new p5.Speech(); // speech synthesis object
-  speechObj.onLoad = voiceReady;
+    speechObj = new p5.Speech(); // speech synthesis object
+    speechObj.onLoad = voiceReady;
+
+    speechObj.started(startSpeaking);
+    speechObj.ended(endSpeaking);
+
+    function startSpeaking(){
+        background(0,255,0);
+    }
+    function endSpeaking(){
+        background (0,0,0)
+    }
 
     function voiceReady() {
         //console.log('voice ready');
