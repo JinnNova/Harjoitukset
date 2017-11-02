@@ -16,6 +16,11 @@ function setup() {
         console.log(speechObj.voices);
         // (Windows 7) + Chrome = 20 voice options.
     }
+}
 
-  speechObj.speak('Coding Train');
+function mousePressed() {
+    // this is how you can change the voice
+    speechObj.setVoice('Google UK English Female');
+    
+    speechObj.speak('Coding Train');
 }
