@@ -20,7 +20,13 @@ function setup() {
 
 function mousePressed() {
     // this is how you can change the voice
-    speechObj.setVoice('Google UK English Female');
-    
-    speechObj.speak('Coding Train');
+    //speechObj.setVoice('Google UK English Female');
+
+    // random voice every click
+    let voiceOptions = speechObj.voices;
+    let voice = random(voiceOptions);
+    console.log(voice.name);
+    speechObj.setVoice(voice.name)
+
+    speechObj.speak('Hello person');
 }
