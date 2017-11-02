@@ -1,5 +1,6 @@
 // needs p5.speech.js library
 // needs p5 library
+// needs p5.dom.js library
 
 // finally works, i just had wrong version of the speech lib. duh.
 let speechObj;
@@ -22,7 +23,8 @@ function setup() {
     // volume slider
     vslider = createSlider(0.,100.,100.)
     vslider.position(20, 140);
-    
+    vslider.mouseReleased(setVolume);
+
 
     function startSpeaking(){
         background(0,255,0);
@@ -37,6 +39,10 @@ function setup() {
         console.log(speechObj.voices);
         // (Windows 7) + Chrome = 20 voice options.
     }
+}
+
+function setVolume(){
+    speechObj.setVolume(vslider.value()/100.);
 }
 
 function mousePressed() {
