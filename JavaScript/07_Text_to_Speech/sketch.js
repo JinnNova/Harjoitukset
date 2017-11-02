@@ -19,11 +19,19 @@ function setup() {
     speechObj.ended(endSpeaking);
 
 
+    // Button
+    speakbutton = createButton("Speak");
+    speakbutton.position(20,100);
+    speakbutton.mousePressed(doSpeak);
 
-    // volume slider
+    // Volume slider
     vslider = createSlider(0.,100.,100.)
     vslider.position(20, 140);
     vslider.mouseReleased(setVolume);
+
+    // Labels
+    label = createDiv("Volume");
+    label.position(160,140);
 
 
     function startSpeaking(){
@@ -45,12 +53,12 @@ function setVolume(){
     speechObj.setVolume(vslider.value()/100.);
 }
 
-function mousePressed() {
+function doSpeak() {
     // this is how you can change the voice
     //speechObj.setVoice('Google UK English Female');
 
     // how to set the speed (half = 0.5, 2x = 2 etc.)
-    speechObj.setRate(0.5);
+    speechObj.setRate(1);
 
     // random voice every click
     let voiceOptions = speechObj.voices;
