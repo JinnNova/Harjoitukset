@@ -6,7 +6,7 @@
 let speechObj;
 
 // UI elements
-let label, input, checkbox, speakbutton, vslider, rslider, pslider;
+let label, voicemenu, input, checkbox, speakbutton, vslider, rslider, pslider;
 
 function setup() {
     createCanvas(400,50);
@@ -31,6 +31,12 @@ function setup() {
     checkbox.style("width", "15px");
     checkbox.style("height", "15px");
     checkbox.position(100,100)
+
+    // Dropdown voice-menu
+    voicemenu = createSelect();
+    voicemenu.position(200,65);
+    voicemenu.option('option 1');
+    voicemenu.option('option 2');
 
     // Button
     speakbutton = createButton("Speak");
