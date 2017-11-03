@@ -19,6 +19,7 @@ function setup() {
     speechObj.ended(endSpeaking);
 
 
+    // Find out how to set relative positions, these are absolutes!
     // Button
     speakbutton = createButton("Speak");
     speakbutton.position(20,100);
@@ -34,9 +35,18 @@ function setup() {
     pslider.position(20,180);
     pslider.mouseReleased(setPitch);
 
+    // Speed/Rate slider
+    rslider = createSlider(10.,200.,100.);
+    rslider.position(20,160);
+    rslider.mouseReleased(setSpeed);
+
     // Labels
     label = createDiv("Volume");
     label.position(160,140);
+    label = createDiv("Speed");
+    label.position(160,160);
+    label = createDiv("Pitch");
+    label.position(160,180);
 
 
     function startSpeaking(){
@@ -60,13 +70,16 @@ function setVolume(){
 function setPitch(){
     speechObj.setPitch(pslider.value()/100.);
 }
+function setSpeed(){
+    speechObj.setRate(rslider.value()/100.)
+}
 
 function doSpeak() {
     // this is how you can change the voice
     //speechObj.setVoice('Google UK English Female');
 
     // how to set the speed (half = 0.5, 2x = 2 etc.)
-    speechObj.setRate(1);
+    // speechObj.setRate(1);
 
     // random voice every click
     let voiceOptions = speechObj.voices;
