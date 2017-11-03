@@ -20,6 +20,12 @@ function setup() {
 
 
     // Find out how to set relative positions, these are absolutes!
+
+    // Editable text box
+    input = createInput("Hello person");
+    input.style("width",400);
+    input.position(20,65);
+
     // Button
     speakbutton = createButton("Speak");
     speakbutton.position(20,100);
