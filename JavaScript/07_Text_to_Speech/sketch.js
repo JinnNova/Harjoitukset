@@ -25,6 +25,12 @@ function setup() {
     input = createInput("Hello person");
     input.style("width",400);
     input.position(20,65);
+    // Interrupt option checkbox
+    checkbox = createInput(0,1,0);
+    checkbox.attribute("type", "checkbox");
+    checkbox.style("width", "15px");
+    checkbox.style("height", "15px");
+    checkbox.position(100,100)
 
     // Button
     speakbutton = createButton("Speak");
@@ -87,11 +93,14 @@ function doSpeak() {
     // how to set the speed (half = 0.5, 2x = 2 etc.)
     // speechObj.setRate(1);
 
+    // if checkbox is checked, speech can be interrupted
+    speechObj.interrupt = checkbox.elt.checked;
+
     // random voice every click
     let voiceOptions = speechObj.voices;
     let voice = random(voiceOptions);
     console.log(voice.name);
     speechObj.setVoice(voice.name)
 
-    speechObj.speak('Hello person');
+    speechObj.speak(input.value());
 }
