@@ -29,6 +29,11 @@ function setup() {
     vslider.position(20, 140);
     vslider.mouseReleased(setVolume);
 
+    // Pitch slider
+    pslider = createSlider(1.,200.,100.);
+    pslider.position(20,180);
+    pslider.mouseReleased(setPitch);
+
     // Labels
     label = createDiv("Volume");
     label.position(160,140);
@@ -51,6 +56,9 @@ function setup() {
 
 function setVolume(){
     speechObj.setVolume(vslider.value()/100.);
+}
+function setPitch(){
+    speechObj.setPitch(pslider.value()/100.);
 }
 
 function doSpeak() {
